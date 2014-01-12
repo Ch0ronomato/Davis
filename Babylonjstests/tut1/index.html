@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Babylon - Basic scene</title>
+		<style>
+			html, body, div, canvas 
+			{
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+			}
+		</style>
+		<script type="text/javascript" src="babylon.1.8.0.js"></script>
+		<script type="text/javascript" src="hand-1.3.4.js"></script>
+	</head>
+	<body>
+		<div id="rootDiv">
+			<canvas id="renderCanvas"></canvas>
+		</div>
+	</body>
+	<script type="text/javascript">
+		// Get the canvas
+		var canvas = document.getElementById("renderCanvas");
+
+		// Load BABYLON 3D engine
+		var engine = new BABYLON.Engine(canvas, true);
+
+		// create the scene
+		var scene = new BABYLON.Scene(engine);
+
+		var camera = new BABYLON.ArcRotateCamera("Camera", 1, 0.8, 10, 
+			new BABYLON.Vector3(0, 0, 0), 
+			scene
+		);
+
+		var light =  new BABYLON.PointLight("Omni", 
+			new BABYLON.Vector3(0, 0, 10), 
+			scene
+		);
+
+		var origin = BABYLON.Mesh.CreateSphere("origin", 10, 1.0, scene);
+
+		// attach the camera
+		scene.activeCamera.attachControl(canvas);
+
+		engine.runRenderLoop(function() {
+			scene.render();
+		});
+	</script>
+</html>

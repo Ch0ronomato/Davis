@@ -1,0 +1,30 @@
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\bin\Debug\Davis_Server.exe.config
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\bin\Debug\Davis_Server.exe
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\bin\Debug\Davis_Server.pdb
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\obj\Debug\Davis_Server.csprojResolveAssemblyReference.cache
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\obj\Debug\Davis_Server.exe
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\obj\Debug\Davis_Server.pdb
+c:\users\ian\documents\visual studio 2013\Projects\Davis_Server\Davis_Server\bin\Debug\Fleck.dll
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Davis_Server.exe.config
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\obj\Debug\Davis_Server.exe
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\obj\Debug\Davis_Server.pdb
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Davis_Server.exe
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Davis_Server.pdb
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Fleck.dll
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\obj\Debug\Davis_Server.csprojResolveAssemblyReference.cache
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\NAudio.dll
+C:\Users\Ian\Documents\GitHub\Davis\Server\Davis_Server\Davis_Server\bin\Debug\NAudio.xml
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\Davis_Server.exe.config
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\obj\Debug\Davis_Server.exe
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\obj\Debug\Davis_Server.pdb
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\Davis_Server.exe
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\Davis_Server.pdb
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\Fleck.dll
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\NAudio.dll
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\NAudio.xml
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ian\Documents\GitHub\Davis\Davis_Server\Davis_Server\obj\Debug\Davis_Server.csprojResolveAssemblyReference.cache
