@@ -17,7 +17,14 @@ namespace Davis_Server
         AudioFileReader file;
         bool playing = false;
         List<string> songs = new List<string>();
-        string rootPath = "C:\\Users\\Ian\\Music\\Davis_music_root\\";
+        string rootPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + "\\Davis_music_root\\";
+        public string RootPath
+        {
+            get
+            {
+                return this.rootPath;
+            }
+        }
         private AudioManager()
         {
             player = new WaveOut();
@@ -43,7 +50,7 @@ namespace Davis_Server
                         // play another song
                         Random rand = new Random();
                         string song = this.songs.ElementAt(rand.Next(0, this.songs.Count));
-                        SetAudioFileReaderPath(this.rootPath + song);
+                        SetAudioFileReaderPath(song);
                         this.Play();
                     }
                 });

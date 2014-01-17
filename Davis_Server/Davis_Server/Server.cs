@@ -7,6 +7,7 @@ using Fleck;
 using kManager = Davis_Server.KinectManager;
 using sManager = Davis_Server.SocketManager;
 using aManager = Davis_Server.AudioManager;
+using Davis_Server.SocketUtils;
 namespace Davis_Server
 {
     class Server
@@ -32,16 +33,9 @@ namespace Davis_Server
                 Console.WriteLine("Started everything");
             }
 
-            else
-            {
-                Server.instance.amanager.SetAudioFileReaderPath("C:\\Users\\Ian\\Music\\Twenty one pilots\\03_-_Migraine.mp3");
-                Server.instance.amanager.Play();
-            }
-
             // socket component
-            server.smanager.StartServer();
+            server.smanager.StartServer(new GenreMessage(server.kmanager.Genres));
 
-            // audio component
             Console.ReadLine();
         }
     }

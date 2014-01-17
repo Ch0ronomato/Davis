@@ -1,24 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Davis_Server.SocketUtils;
+using Fleck;
+using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Text;
+using System.Reflection;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Fleck;
+
 namespace Davis_Server
 {
-    public class Message
-    {
-        string songName, songType;
-        public Message(string sname, string stype)
-        {
-            songName = sname;
-            songType = stype;
-        }
-    }
+
     class SocketManager
     {
+        private class FinalMessage
+        {
+            object data;
+            MessageType type;
+            public FinalMessage(object d, MessageType t)
+            {
+                this.data = d;
+                this.type = t;
+            }
+        }
         List<IWebSocketConnection> _clients = new List<IWebSocketConnection>();
-        public void StartServer()
+        public void StartServer(GenreMessage genres)
         {
             var server = new WebSocketServer("ws://localhost:8181");
             server.Start(socket =>
@@ -27,6 +33,7 @@ namespace Davis_Server
                 {
                     Console.WriteLine("Connected to " + socket.ConnectionInfo.ClientIpAddress);
                     _clients.Add(socket);
+                    this._sendMessageTo(genres, socket);
                 };
 
                 socket.OnClose = () =>
@@ -39,6 +46,30 @@ namespace Davis_Server
                     Console.WriteLine(message);
                 };
             });
+        }
+
+        public void SendMessage(Message message)
+        {
+            this._sendMessage(message);
+        }
+
+        private void _sendMessage(Message message)
+        {
+            foreach (var socket in this._clients)
+            {
+                this._sendMessageTo(message, socket);
+            }
+        }
+
+        private void _sendMessageTo(Message message, IWebSocketConnection client)
+        {
+            Type trueType = message.GetType();
+            MethodInfo method = trueType.GetMethods().Where(x => x.Name == "GetMessage").First();
+            object data = method.Invoke(message, null);
+            FinalMessage m = new FinalMessage(data, message.Type);
+            JsonSerializer serializer = new JsonSerializer();
+            
+            client.Send(JsonConvert.SerializeObject(m));
         }
     }
 }

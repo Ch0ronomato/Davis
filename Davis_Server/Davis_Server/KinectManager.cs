@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using Microsoft.Kinect;
 using Microsoft.Speech.Recognition;
 using Microsoft.Speech.AudioFormat;
 using System.Threading.Tasks;
 using Fleck;
-using Newtonsoft.Json;
 
 namespace Davis_Server
 {
@@ -26,6 +26,14 @@ namespace Davis_Server
             get { return engine; }
         }
         List<IWebSocketConnection> sockets = null;
+        List<string> genres = new List<string>();
+        public List<string> Genres
+        {
+            get
+            {
+                return this.genres;
+            }
+        }
         public bool FindKinect()
         {
             bool foundKinect = false;
@@ -78,17 +86,34 @@ namespace Davis_Server
             
             // Add grammer
             Choices choices = new Choices();
-            List<string> dances = new List<string>() { "waltz", "swing", "club" };
-            foreach(string dance in dances) 
+            string root = Server.instance.amanager.RootPath;
+            
+            if (!Directory.Exists(root))
             {
+                throw new Exception("Davis directory does not exist");
+            }
+
+            foreach (string _dance in Directory.EnumerateDirectories(root)) 
+            {
+                string dance = _dance.Replace(root, "");
+
+                // add dance
+                this.genres.Add(dance);
+
+                // add recognition
                 StringBuilder strBuilder = new StringBuilder();
                 strBuilder.Append("Davis play me something I can ");
                 strBuilder.Append(dance);
                 strBuilder.Append(" to");
                 choices.Add(new SemanticResultValue(strBuilder.ToString(), dance));
             }
+
+            // static stuff
             choices.Add(new SemanticResultValue("Davis play something for elizabeth", "elizabeth"));
             choices.Add(new SemanticResultValue("Davis play something for mary", "mary"));
+            choices.Add(new SemanticResultValue("init", "INIT"));
+
+            // grammer builder
             var gb = new GrammarBuilder { Culture = _ri.Culture };
             gb.Append(choices);
             var g = new Grammar(gb);
@@ -150,19 +175,14 @@ namespace Davis_Server
                         song = Server.instance.amanager.FindSong("elizabeth");
                         break;
                     }
+                case "INIT":
+                    {
+                        Console.WriteLine("Initalized");
+                        return;
+                    }
             }
             Server.instance.amanager.SetAudioFileReaderPath(song);
             Server.instance.amanager.Play();
-
-            // send message over websocket
-            string message = JsonConvert.SerializeObject(new Message(song, type));
-            if (this.sockets != null)
-            {
-                foreach (var socket in this.sockets)
-                {
-                    socket.Send(message);
-                }
-            }
         }
     }
 }
