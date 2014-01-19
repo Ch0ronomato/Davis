@@ -15,9 +15,9 @@ namespace Davis_Server.SocketUtils
             genres = _genres;
         }
 
-        public object GetMessage()
+        public string[] GetMessage()
         {
-            return this.genres;
+            return this.genres.ToArray();
         }
     }
 }

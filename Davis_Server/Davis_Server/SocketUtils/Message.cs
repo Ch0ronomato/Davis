@@ -21,9 +21,9 @@ namespace Davis_Server.SocketUtils
             type = ms;
         }
 
-        public object GetMessage()
+        public string[] GetMessage()
         {
-            return "Unknown";
+            return new string[] { "Unknown" };
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Davis_Server.SocketUtils
             songType = stype;
         }
 
-        public object GetMessage()
+        public string[] GetMessage()
         {
             return new string[] { songName, songType };
         }

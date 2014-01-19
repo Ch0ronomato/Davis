@@ -8,6 +8,6 @@ namespace Davis_Server.SocketUtils
 {
     public interface IMessage
     {
-        object GetMessage();
+        string[] GetMessage();
     }
 }

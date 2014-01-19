@@ -24,9 +24,37 @@
 
 	socket.onmessage = function (event) {
 		alert("Message recieved");
-		console.dir(event);
+		var message = JSON.parse(event.data);
+
+		if (message.type == 0) {
+			processGenres($, message.data);
+		}
+
+		if (message.type == 1) {
+			processSong($, message.data);
+		}
 	}
 
+	applyBindings($);
+}
+
+function processGenres($, genres) {
+	// remove current children.
+	$("#genres").find("li").remove();
+	for (var genre in genres) {
+		$("#genres ul").append("<li>" + genres[genre] + "</li>");
+	}
+	applyBindings($);
+}
+
+function processSong($, song) {
+
+}
+
+/**
+ * Bindings for any jquery elements go here.
+ */
+function applyBindings($) {
 	// trap on click to animate.
 	$("#genres li").click(function() {
 		if (!$(this).hasClass("current_genre")) {

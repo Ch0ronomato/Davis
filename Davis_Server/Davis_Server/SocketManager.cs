@@ -13,15 +13,10 @@ namespace Davis_Server
 
     class SocketManager
     {
-        private class FinalMessage
+        public struct FinalMessage
         {
-            object data;
-            MessageType type;
-            public FinalMessage(object d, MessageType t)
-            {
-                this.data = d;
-                this.type = t;
-            }
+            public MessageType type;
+            public string[] data;
         }
         List<IWebSocketConnection> _clients = new List<IWebSocketConnection>();
         public void StartServer(GenreMessage genres)
@@ -65,11 +60,14 @@ namespace Davis_Server
         {
             Type trueType = message.GetType();
             MethodInfo method = trueType.GetMethods().Where(x => x.Name == "GetMessage").First();
-            object data = method.Invoke(message, null);
-            FinalMessage m = new FinalMessage(data, message.Type);
+            string[] data = (string[])method.Invoke(message, null);
+            FinalMessage final = new FinalMessage();
+            final.data = data;
+            final.type = message.Type;
+
             JsonSerializer serializer = new JsonSerializer();
             
-            client.Send(JsonConvert.SerializeObject(m));
+            client.Send(JsonConvert.SerializeObject(final));
         }
     }
 }
